@@ -1,0 +1,71 @@
+
+
+<app-navbar></app-navbar>
+
+<div *ngIf="isSessionExpired()"  style="width: 100%; font-size: 25px; text-align: center; color: red;padding-top: 5%; background-image: url(./assets/files/gettyimages-1132439283-640x640.jpg);
+background-attachment: fixed;
+background-size: cover;width:101%;height: auto;">
+  <b> {{'Your Session has been Expired please Logged In again' |translate }} </b>
+</div>
+
+<div class="row " style="padding-top: 3%; padding-bottom: 15%; background-image: url(./assets/files/gettyimages-1132439283-640x640.jpg);
+background-attachment: fixed;
+background-size: cover;width:101%;height: auto;">
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+  <div class="card">
+    <div class="card-body shadow-lg">
+      <form >
+       
+        <h1 class="text-primary font-weight-bold">{{'Log in' |translate}}</h1>
+        <div>
+          <h4 *ngIf="error" class="text-center text-danger">{{message}} </h4>
+          <h4 *ngIf="!error" class="text-center text-success">{{message}} </h4>
+        </div>
+
+        <div style="padding-top:3%">
+          <span class="pt-2"><b>{{'Email Id' |translate}}</b>
+            <span class="required-field"></span></span>
+
+          <div class="col-sm-12">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-envelope grey-text"></i> </div>
+              </div>
+              <input type="text" name="loginId" [(ngModel)]="form.loginId" class="form-control"
+                placeholder="{{'Enter Login Id' | translate}}">
+            </div>
+          </div>
+        </div>
+
+        <span class="alertRedColor">{{inputerror.loginId}}</span> 
+        <div style="padding-top:3%">
+          <span><b>{{'Password' | translate}}</b>
+            <span class="required-field"></span></span>
+          <div class="col-sm-12">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-key grey-text "></i> </div>
+              </div>
+              <input type="password" name="password" [(ngModel)]="form.password" class="form-control"
+                placeholder="{{'Enter Password' | translate}}">
+            </div>
+          </div>
+          <span class="alertRedColor">{{inputerror.password}}</span>
+        </div>
+        <div class="row pt-3 pl-3 pb-3">
+          <div class="pt-2">
+            <button (click)="signIn()"  class="btn btn-md btn-success">
+              {{'Sign in' | translate}}</button>
+          </div>
+          <div class="pl-3 pt-2">
+            <a class="btn btn-warning" [routerLink]="['/forgot-password']"  >{{'Forgot Password' |translate}}</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,13 @@
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  
+.dropdown-menu a {
+    color: black;
+    padding-right: 10%;
+    text-decoration: none;
+    display: block;
+  }

@@ -1,0 +1,158 @@
+<app-navbar></app-navbar>
+
+<div class="content-wrapper" style="padding-top: 3%;padding-bottom: 8; background-image: url(../../assets/files/bg5.jpg); background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;width:100%;
+  height: 900px;" >
+<!-- <div class=" row justify-content-center "> -->
+  <div class="container-fluid bg-light">
+  <div class="  col-md-12 my-xl-5 ">
+   
+<!-- <div class="card">
+  <div class="card-body shadow-lg">
+   -->
+
+
+
+
+
+          <h1 class="text-center"> {{'Faculty List'  | translate}}</h1>
+
+          <div *ngIf="form.error" class="text-center">
+
+            <h1 class="text-center text-danger">{{form.message}}</h1>
+            <button type="submit" (click)="reload()" class="btn btn-info "> {{'Back' | translate}} </button>
+          </div>
+          <div>
+            <div *ngIf="isVisible">
+              <div *ngIf="!form.delete" class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <div class="text-center">{{form.message}} </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3 ">
+            <div class="col-sm-2">
+              <input type="text" class="form-control" [(ngModel)]="form.searchParams.firstName"
+                placeholder="{{'Search Name' | translate}}">
+            </div>
+            <div class="col-sm-2">
+              <select class=" mx-3 " class="form-control" [(ngModel)]="form.searchParams.collegeName">
+                <option value=""> Select </option>
+                <option *ngFor="let list1 of form.preload.clgList">
+                  {{list1.value}}
+                </option>
+              </select>
+            </div>
+            <div class="col-sm-2">
+              <select class=" mx-3 " class="form-control" [(ngModel)]="form.searchParams.courseName">
+                <option value=""> Select </option>
+                <option *ngFor="let rlist of form.preload.coList">
+                  {{rlist.value}}
+                </option>
+              </select>
+            </div>
+
+
+            <div class=" col-sm-1">
+              <button (click)="search()" class="btn btn-primary">
+                {{'Search' | translate}}</button>
+            </div>
+            <div class="text-right col-md-4 ">
+              <button type="submit" class="btn btn-warning" (click)="navigate('/add-faculty')">{{'New' | translate}} </button>
+            </div>
+          </div>
+
+          <!-- <form>
+    <div  class="form-group col-md-4">
+      <label class="lable"><strong>RoleName:
+          <font color="red">*</font>
+  </strong></label>
+    
+        
+      <input type="text" class="form-control"  [(ngModel)]="form.name" placeholder="Enter RoleName" name="name">
+     <button class="btn btn-primary" (click)="search()"> Search </button>
+    </div> 
+  </form>  -->
+
+
+          <!-- <div *ngIf="du.error" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong> {{du.message}} </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+
+
+
+          <div *ngIf="!form.error" class="table-responsive ">
+            <table class="table  table-striped">
+
+              <thead>
+                <tr class=" text-dark">
+                  <td> <strong> {{'S.No' | translate}} </strong></td>
+                  <td><strong>{{'FirstName' | translate}} </strong></td>
+                  <td> <strong>{{'LastName' | translate}} </strong></td>
+                  <td> <strong>{{'DOB' | translate}} </strong></td>
+                  <td> <strong>{{'Gender' | translate}} </strong></td>
+                  <td> <strong>{{'Mobile No' | translate}} </strong></td>
+                  <td> <strong>{{'Email' | translate}} </strong></td>
+
+                  <td> <strong>{{'College' | translate}} </strong></td>
+                  <td> <strong>{{'Course' | translate}} </strong></td>
+                  <td> <strong>{{'Subject' | translate}} </strong></td>
+                  <td> <strong>{{'Edit' | translate}} &nbsp; / &nbsp; {{'Delete' | translate}}</strong></td>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let f of form.list ; let i=index">
+                  <td> {{(form.pageNo*5)+i+ 1}} </td>
+
+                  <td> {{f.firstName}} </td>
+                  <td> {{f.lastName}} </td>
+                  <td> {{f.dob}} </td>
+                  <td> {{f.gender}} </td>
+                  <td> {{f.mobileNo}} </td>
+                  <td> {{f.emailId}} </td>
+                  <td> {{f.collegeName}} </td>
+                  <td> {{f.courseName}} </td>
+                  <td> {{f.subjectName}} </td>
+                  <td><button class="btn btn-outline-info" (click)="navigate('/add-faculty/'+f.id)"> <i
+                        class="fa fa-edit text-primary"></i> </button> &nbsp; &nbsp;/ &nbsp; &nbsp;
+                    <button class="btn btn-outline-darkcd" (click)="confirm(f.id)"><i
+                        class="fa fa-trash text-danger"></i></button>
+                  </td>
+
+
+                </tr>
+              </tbody>
+            </table>
+
+
+            <table width="100%">
+              <tr>
+                <td align="left">
+                  <button type="submit" (click)="previous()" [disabled]="form.pageNo == 0" class="btn btn-info">{{'Previous' | translate}}
+                  </button>
+                </td>
+
+                <td align="right">
+                  <button type="submit" (click)="next()" [disabled]=" 5 > form.pageSize " class="btn btn-info">{{'Next' | translate}}
+                  </button>
+                </td>
+
+              </tr>
+            </table>
+
+
+          </div>
+
+
+
+        </div>
+      </div>
+    <!-- </div>
+  </div>
+</div> -->

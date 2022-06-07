@@ -1,0 +1,177 @@
+
+
+
+<app-navbar></app-navbar>
+<div class="row " style="padding-top: 3%; padding-bottom:3%;background-image: url(../../assets/files/bg3.jpg);
+background-attachment: fixed;
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+width:101%;
+  height: 150%;">
+  <div class="col-sm-3"></div>    <div class="col-md-6 my-xl-5">
+        <div class="card">
+            <div class="card-body shadow-lg ">
+        <form>
+    
+    <div class="container">
+    
+      <div>
+        <h4 *ngIf="form.error" class="text-center text-danger">{{form.message}} </h4>
+        <h4  *ngIf="!form.error" class="text-center text-success">{{form.message}} </h4>
+    </div>
+    
+    <h2 *ngIf="!form.data.id>0" class="text-center text-primary font-weight-bold">{{'Add Faculty'  | translate}}</h2>
+    <h2 *ngIf="form.data.id>0" class="text-center text-primary font-weight-bold">{{'Update Faculty' | translate}}</h2>
+    
+    
+        <div class="form-group">
+            <label class="lable"><strong>{{'FirstName' | translate}}:
+                <font color="red">*</font>
+        </strong></label>
+          
+              
+            <input type="text" class="form-control" [(ngModel)]="form.data.firstName"   placeholder="{{'Enter FirstName' | translate}}" name="firstName">
+            <div class="text-danger">{{form.inputerror.firstName}} </div>
+          </div>
+          <div class="form-group">
+            <label class="lable"><strong>{{'LastName' | translate}}:
+                <font color="red">*</font>
+        </strong></label>
+            <input type="text" class="form-control" [(ngModel)]="form.data.lastName"  placeholder="{{'Enter LastName' | translate}}"  name="lastName">
+            <div class="text-danger">{{form.inputerror.lastName}}</div>
+          </div>
+    
+          <div class="form-group">
+            <label class="lable"><strong>{{'DOB' | translate}}:
+                <font color="red">*</font>
+        </strong></label>
+        <!-- <input id="txtDate" type="text"  class="form-control date-input" placeholder="dd/mm/yyyy" name="dob" [(ngModel)]="form.data.dob" readonly="readonly" > -->
+          
+            <input type="date" class="form-control"   placeholder="dd/mm/yyyy" name="dob" [(ngModel)]="form.data.dob" >
+            <div class="text-danger">{{form.inputerror.dob}}</div>
+          </div>
+    
+          <div class="form-group">
+            <label class="lable"><strong>{{'Mobile No' | translate}}:
+                <font color="red">*</font>
+        </strong></label>
+            <input type="text" class="form-control"  [(ngModel)]="form.data.mobileNo"  placeholder="{{'Enter Mobile No' | translate}}"  name="mobileNo">
+            <div class="text-danger">{{form.inputerror.mobileNo}}</div>
+          </div>
+    
+          <div class="form-group">
+            <label class="lable"><strong>{{'Email' | translate}}:
+                <font color="red">*</font>
+        </strong></label>
+            <input type="text" class="form-control" [(ngModel)]="form.data.emailId"  placeholder="{{'Enter Email Id' | translate}}"  name="emailId">
+            <div class="text-danger">{{form.inputerror.emailId}}</div>
+          </div>
+    
+          <div class="form-group">
+            <label class="lable"><strong>{{'Gender' | translate}}:
+                <font color="red">*</font>
+        </strong></label>
+        <select class="form-control"  name="gender" [(ngModel)]="form.data.gender"
+        >
+        <option  value="" [disabled]="true">Select</option>
+        <option  value="male">{{'Male' | translate}} </option>
+        <option value="female">{{'Female' | translate}} </option>
+      </select>
+       <div class="text-danger">{{form.inputerror.gender}}</div>
+          </div>
+    
+          <div class="form-group">
+            <label class="lable"><strong>{{'Qualification' | translate}}:
+                <font color="red">*</font>
+        </strong></label>
+            <input type="text" class="form-control" [(ngModel)]="form.data.qualification"  placeholder="{{'Enter Your Qualification' | translate}}"  name="qualification">
+            <div class="text-danger">{{form.inputerror.qualification}}</div>
+          </div>
+          <!-- <div style="padding-top:3%">
+            <span class="pt-2"><b>Role</b>
+              <span class="required-field"></span></span>
+            <div class="col-sm-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="fa fa-user grey-text"></i> </div>
+                </div>
+    
+    
+                <select class="form-control" name="roleId" [(ngModel)]="form.data.roleId" aria-label="ngSelected">
+    
+                  <option *ngFor="let obj of form.preload.rList" [value]="obj.key">{{obj.value}}</option>
+                </select>
+              </div>
+            </div>
+            <span class="alertRedColor"> {{form.inputerror.roleId}} </span>
+          </div> -->
+    
+    
+    
+          <div class="form-group">
+            <label class="lable"><strong>{{'College Name' | translate}}:
+                <font color="red">*</font>
+                
+        </strong></label>
+        
+        <select class="form-control" name="collegeId" [(ngModel)]="form.data.collegeId" aria-label="ngSelected">
+    
+            <option *ngFor="let obj of form.preload.clgList" [value]="obj.key">{{obj.value}}</option>
+          </select> <div class="text-danger">{{form.inputerror.collegeId}}</div>
+          </div>
+
+          <div class="form-group">
+            <label class="lable"><strong>{{'Course Name' | translate}}:
+                <font color="red">*</font>
+                
+        </strong></label>
+        
+        <select class="form-control" name="courseId" [(ngModel)]="form.data.courseId" aria-label="ngSelected">
+    
+            <option *ngFor="let obj of form.preload.coList" [value]="obj.key">{{obj.value}}</option>
+          </select> <div class="text-danger">{{form.inputerror.courseId}}</div>
+          </div>
+    
+
+          <div class="form-group">
+            <label class="lable"><strong>{{'Subject Name' | translate}}:
+                <font color="red">*</font>
+                
+        </strong></label>
+        
+        <select class="form-control" name="subjectId" [(ngModel)]="form.data.subjectId" aria-label="ngSelected">
+    
+            <option *ngFor="let obj of form.preload.subList" [value]="obj.key">{{obj.value}}</option>
+          </select> <div class="text-danger">{{form.inputerror.subjectId}}</div>
+          </div>
+       
+          <div *ngIf="!form.data.id>0">
+          <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+          <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Submit' | translate}}</button>
+          &nbsp;
+          <button  type="submit" class="btn btn-warning" (click)="reset()">{{'Reset' | translate}}</button>
+         &nbsp;
+          
+              <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+          </div>
+          
+          <div *ngIf="form.data.id>0">
+            <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+            <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Update' | translate}}</button>
+            &nbsp;
+            <button  type="submit" class="btn btn-warning" (click)="navigate('/user-list')">{{'Faculty List' | translate}}</button>
+           &nbsp;
+            
+                <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+            </div>
+            
+    
+    
+    </div>
+    </form>  
+    
+    </div>
+    </div>
+    </div>
+    </div>

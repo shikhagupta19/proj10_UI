@@ -1,0 +1,189 @@
+
+<app-navbar></app-navbar>
+<div class="row " style="padding-top: 3%; padding-bottom:3%;background-image: url(../../assets/files/bg3.jpg);
+background-attachment: fixed;
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+width:101%;
+  height: 150%;">
+  <div class="col-sm-3"></div>
+ <div class="col-md-6 my-xl-5">
+    <div class="card">
+        <div class="card-body shadow-lg ">
+    <form>
+
+<div class="container">
+
+  <div>
+    <h4 *ngIf="form.error" class="text-center text-danger">{{form.message}} </h4>
+    <h4  *ngIf="!form.error" class="text-center text-success">{{form.message}} </h4>
+</div>
+
+<h2 *ngIf="!form.data.id>0" class="text-center text-primary font-weight-bold">{{'Add User'  | translate}}</h2>
+<h2 *ngIf="form.data.id>0" class="text-center text-primary font-weight-bold">{{'Update User'  | translate}}</h2>
+
+<br>
+<div *ngIf="form.data.id>0" align="right">
+  <img src="http://localhost:8081/User/profilePic/{{form.data.id}}" height="100px" width="140px">
+</div>
+<br>
+    <div class="form-group">
+        <label class="lable"><strong>{{'FirstName' | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+      
+          
+        <input type="text" class="form-control" [(ngModel)]="form.data.firstName"   placeholder="{{'Enter FirstName'  | translate}}" name="firstName">
+        <div class="text-danger">{{form.inputerror.firstName}} </div>
+      </div>
+      <div class="form-group">
+        <label class="lable"><strong>{{'LastName' | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+        <input type="text" class="form-control" [(ngModel)]="form.data.lastName"  placeholder="{{'Enter LastName' | translate}}"  name="lastName">
+        <div class="alertRedColor">{{form.inputerror.lastName}}</div>
+      </div>
+
+      <div class="form-group">
+        <label class="lable"><strong>{{'DOB' | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+    <!-- <input id="txtDate" type="text"  class="form-control date-input" placeholder="dd/mm/yyyy" name="dob" [(ngModel)]="form.data.dob" readonly="readonly" > -->
+      
+        <input type="date" class="form-control"   placeholder="dd" name="dob" [(ngModel)]="form.data.dob" >
+        <div class="text-danger">{{form.inputerror.dob}}</div>
+      </div>
+
+      <div class="form-group">
+        <label class="lable"><strong>{{'Mobile' | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+        <input type="text" class="form-control"  [(ngModel)]="form.data.phone"  placeholder="{{'Enter Mobile No'  | translate}}"  name="phone">
+        <div class="text-danger">{{form.inputerror.phone}}</div>
+      </div>
+
+      <div class="form-group">
+        <label class="lable"><strong>{{'Email'  | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+        <input type="text" class="form-control" [(ngModel)]="form.data.email"  placeholder="{{'Enter Email Id'  | translate}}"  name="email">
+        <div class="text-danger">{{form.inputerror.email}}</div>
+      </div>
+
+      <div class="form-group">
+        <label class="lable"><strong>{{'Gender' | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+    <select class="form-control" name="gender" [(ngModel)]="form.data.gender"
+    >
+    <option [value]=default [disabled]="true" selected disabled>Select Gender</option>
+    <option value="male">{{'Male' | translate}} </option>
+    <option value="female">{{'Female' | translate}} </option>
+  </select>
+   <div class="text-danger">{{form.inputerror.gender}}</div>
+      </div>
+
+      <div class="form-group">
+        <label class="lable"><strong>{{'Password' | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+        <input type="text" class="form-control" [(ngModel)]="form.data.password"  placeholder="{{'Enter Password'  | translate}}"  name="password">
+        <div class="text-danger">{{form.inputerror.password}}</div>
+      </div>
+      <!-- <div style="padding-top:3%">
+        <span class="pt-2"><b>Role</b>
+          <span class="required-field"></span></span>
+        <div class="col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fa fa-user grey-text"></i> </div>
+            </div>
+
+
+            <select class="form-control" name="roleId" [(ngModel)]="form.data.roleId" aria-label="ngSelected">
+
+              <option *ngFor="let obj of form.preload.rList" [value]="obj.key">{{obj.value}}</option>
+            </select>
+          </div>
+        </div>
+        <span class="alertRedColor"> {{form.inputerror.roleId}} </span>
+      </div> -->
+
+
+
+      <div class="form-group">
+        <label class="lable"><strong>{{'Role' | translate}}:
+            <font color="red">*</font>
+            
+    </strong></label>
+    
+    <select class="form-control" name="roleId" [(ngModel)]="form.data.roleId" aria-label="ngSelected">
+      <option [value]=default [disabled]="true" selected disabled>Select Role
+      </option>
+        <option *ngFor="let obj of form.preload.rList" [value]="obj.key">{{obj.value}}</option>
+      </select> <div class="text-danger">{{form.inputerror.roleId}}</div>
+      </div>
+
+      <div class="form-group">
+        <label class="lable"><strong>{{'Status' | translate}}:
+            <font color="red">*</font>
+    </strong></label>
+    
+    <select [(ngModel)]="form.data.status" name="status" class="form-control" id="exampleFormControlSelect1">
+      <option [value]=default [disabled]="true" selected disabled>Select Status
+      </option>
+    <option value="Activate" s>Active </option>
+    <option value="DeActivate">DeActive </option>
+  </select>
+   <div class="text-danger">{{form.inputerror.status}}</div>
+      </div> 
+
+      <div style="padding-top:3%">
+        <span class="pt-2"><b>{{'Image'  | translate}}</b>
+          <!-- <span class="required-field"></span> --> </span> 
+
+        <div class="col-sm-12">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fa fa-picture-o grey-text"></i> 
+            </div>
+            <input type="file" id="customFile" name="imageId"
+              (change)="onFileSelect($event.target.files)" accept="image/**">
+
+            <span class="alertRedColor"> {{form.inputerror.image}} </span>
+          </div>
+        </div>
+      </div>
+</div>
+
+<br>
+      <div *ngIf="!form.data.id>0">
+      <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+      <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Submit' | translate}}</button>
+      &nbsp;
+      <button  type="submit" class="btn btn-warning" (click)="reset()">{{'Reset' | translate}}</button>
+     &nbsp;
+      
+          <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+      </div>
+      
+      <div *ngIf="form.data.id>0">
+        <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+        <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Update' | translate}}</button>
+        &nbsp;
+        <button  type="submit" class="btn btn-warning" (click)="navigate('/user-list')">{{'User List'  | translate}}</button>
+       &nbsp;
+        
+            <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+        </div>
+        
+
+
+</div>
+</form>  
+
+</div>
+</div>
+</div>
+</div>

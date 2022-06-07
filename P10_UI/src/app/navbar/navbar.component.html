@@ -1,0 +1,154 @@
+
+
+
+
+<nav   class="navbar  navbar-expand-lg bg-dark">
+    <a class="nav-link" href="#">
+      <strong class="text-white">{{'NCS PVT. LTD' | translate}}</strong>
+    </a>
+
+    <select #locale (change)='changeLocale(locale.value)'>
+      <option value="en">English</option>
+      <option value="hi">{{'Hindi' | translate }}</option>
+    </select>
+<!--   
+    <select #locale (change)='changeLocale(locale.value)'>
+      <option value="en">English</option>
+      <option value="hi">{{'Hindi' | translate }}</option>
+    </select>
+   -->
+  
+    <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav pl-2 ml-auto">
+
+   
+
+    <li  *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+        id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <font style="color: white;">{{'Role' | translate}} </font>
+      </a>
+      <div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" [routerLink]="['/role']"><i
+            class="fa fa-user"></i>{{'Add Role' | translate}}</a>
+        <a class="dropdown-item" [routerLink]="['/rolelist']"><i class="fa fa-list"></i>{{'Role List' |translate}}</a>
+      </div>
+
+</li>
+
+<li *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'User' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-user']"><i
+      class="fa fa-user"></i>{{'Add User' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/user-list']"><i class="fa fa-list"></i>{{'User List' | translate}}</a>
+</div>
+
+
+
+</li>
+<li *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'College' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-college']"><i
+      class="fa fa-university"></i>{{'Add College' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/college-list']"><i class="fa fa-list"></i>{{'College List' | translate}}</a>
+</div>
+</li>
+
+<li *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'Student' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-student']"><i
+      class="fa fa-university"></i>{{'Add Student' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/student-list']"><i class="fa fa-list"></i>{{'Student List'| translate}}</a>
+</div>
+</li>
+
+<li *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'Course' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-course']"><i
+      class="fa fa-university"></i>{{'Add Course' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/course-list']"><i class="fa fa-list"></i>{{'Course List' | translate}}</a>
+</div>
+</li>
+
+<li *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'Subject' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-subject']"><i
+      class="fa fa-university"></i>{{'Add Subject' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/subject-list']"><i class="fa fa-list"></i>{{'Subject List' | translate}}</a>
+</div>
+</li>
+
+
+<li  *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'Faculty' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-faculty']"><i
+      class="fa fa-user"></i>{{'Add Faculty' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/faculty-list']"><i class="fa fa-list"></i>{{'Faculty List' | translate}}</a>
+</div>
+</li>
+
+<li *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'TimeTable' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-timetable']"><i
+      class="fa fa-user"></i>{{'Add TimeTable' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/timetable-list']"><i class="fa fa-list"></i>{{'TimeTable List' | translate}}</a>
+</div>
+</li>
+
+<li *ngIf="checkLogin()" class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;">{{'MarkSheet' | translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a class="dropdown-item" [routerLink]="['/add-marksheet']"><i
+      class="fa fa-user"></i>{{'Add MarkSheet' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/marksheet-list']"><i class="fa fa-list"></i>{{'MarkSheet List' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/get-marksheet']"><i class="fa fa-list"></i>{{'Get MarkSheet' | translate}}</a>
+  <a class="dropdown-item" [routerLink]="['/marksheet-merit-list']"><i class="fa fa-list"></i>{{'Marksheet-Merit-List' | translate}}</a>
+
+</div>
+</li>
+
+<li  class="nav-item dropdown "><a class="nav-link dropdown-toggle" href="#"
+  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <font style="color: white;" *ngIf="name">Hi,{{name}}  </font>
+  <font style="color: white;" *ngIf="!name">{{'Hi,Guest'| translate}} </font>
+</a>
+<div class="dropdown-menu bg-warning" aria-labelledby="navbarDropdown">
+  <a *ngIf="!checkLogin()" class="dropdown-item" [routerLink]="['/login']"><i
+      class="fa fa-sign-in-alt" ></i>{{'Login' | translate}}</a>
+  <a class="dropdown-item"  [routerLink]="['/signup']" *ngIf="!checkLogin()"><i class="fa fa-user-plus"></i>{{'SignUp' | translate}}</a>
+  <a class="dropdown-item" *ngIf="checkLogin()"  (click)="forward()" ><i class="fa fa-user"></i>{{'My Profile' | translate}}</a>
+  <a *ngIf="checkLogin()" class="dropdown-item"  routerLink="/change-password" ><i class="fa fa-lock"></i>{{'Change Password' | translate}}</a>
+  <a *ngIf="checkLogin()" class="dropdown-item"  (click)="logout()" ><i class="fa fa-sign-out-alt"></i>{{'Logout' | translate}}</a>
+ 
+</div>
+</li>
+
+</ul>
+</div>
+</nav>

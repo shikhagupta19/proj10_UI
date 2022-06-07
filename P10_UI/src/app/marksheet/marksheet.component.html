@@ -1,0 +1,126 @@
+
+<app-navbar></app-navbar>
+<div class="row " style="padding-top: 3%; padding-bottom:3%;background-image: url(../../assets/files/bg3.jpg);
+background-attachment: fixed;
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+width:101%;
+  height: 150%;">
+  <div class="col-sm-3"></div>
+  	<div class="col-md-6 my-xl-5" >
+	
+    <div class="card">
+            <div class="card-body shadow-lg ">
+             
+<form>
+
+	<div class="container">
+        <div>
+            <h4 *ngIf="form.error" class="text-center text-danger">{{form.message}} </h4>
+            <h4  *ngIf="!form.error" class="text-center text-success">{{form.message}} </h4>
+        </div>
+	
+	    <h2 *ngIf="!form.data.id>0" class="text-center text-primary font-weight-bold">{{'Add MarkSheet' | translate}}</h2>
+          <h2 *ngIf="form.data.id>0" class="text-center text-primary font-weight-bold">{{'Update Marksheet' | translate}}</h2>
+    
+	
+          <label> <strong>{{'Roll No' | translate}} <font color="red">*</font> </strong> </label>
+          <div class="input-group">
+          
+          <div class="input-group-append">
+          <span class="input-group-text"> <i class="fa fa-list"></i> </span>
+          </div>
+          <input [(ngModel)]="form.data.rollNo" type="text" class="form-control" 
+          placeholder="{{'Enter Roll No' | translate}}"  name="rollNo">
+          </div>
+          <div class="text-danger">{{form.inputerror.rollNo}} </div>
+	
+	
+          <label> <strong>{{'Student Name' | translate}} <font color="red">*</font> </strong> </label>
+	<div class="input-group">
+	
+	<div class="input-group-append">
+	<span class="input-group-text"> <i class="fa fa-university"></i> </span>
+	</div>
+	<select class="form-control" name="studentId" [(ngModel)]="form.data.studentId" aria-label="ngSelected">
+
+        <option *ngFor="let obj of form.preload.studentList" [value]="obj.key">{{obj.value}}</option>
+      </select>
+	</div>
+    <div class="text-danger">{{form.inputerror.studentId}} </div>
+
+
+  
+	
+	<label><strong>{{'Physics' | translate}} <font color="red">*</font></strong>  </label>
+	
+	<div class="input-group" >
+	<div class="input-group-append">
+	<span class="input-group-text"><i class="fas fa-phone"></i> </span>
+	
+	</div>
+	<input class="form-control" [(ngModel)]="form.data.physics" type="number"  placeholder="{{'Enter Physics No' | translate}}" 
+	name="physics"  >
+	
+	</div>
+	<div class="text-danger">{{form.inputerror.physics}} </div>
+
+    <label><strong>{{'Chemistry' | translate}} <font color="red">*</font></strong>  </label>
+	
+	<div class="input-group" >
+	<div class="input-group-append">
+	<span class="input-group-text"><i class="fas fa-phone"></i> </span>
+	
+	</div>
+	<input class="form-control" [(ngModel)]="form.data.chemistry" type="number"  placeholder="{{'Enter Chemistry No' | translate}}" 
+	name="chemistry"  >
+	
+	</div>
+	<div class="text-danger">{{form.inputerror.chemistry}} </div>
+
+    <label><strong>{{'Maths' | translate}} <font color="red">*</font></strong>  </label>
+	
+	<div class="input-group" >
+	<div class="input-group-append">
+	<span class="input-group-text"><i class="fas fa-phone"></i> </span>
+	
+	</div>
+	<input class="form-control" [(ngModel)]="form.data.maths" type="number"  placeholder="{{'Enter Maths No' | translate}}" 
+	name="maths"  >
+	
+	</div>
+	<div class="text-danger">{{form.inputerror.maths}} </div>
+	
+   
+
+      
+	
+    <div class="mt-3" *ngIf="!form.data.id>0">
+        <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+        <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Submit' | translate}}</button>
+        &nbsp;
+        <button  type="submit" class="btn btn-warning" (click)="reset()">{{'Reset' | translate}}</button>
+       &nbsp;
+        
+            <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+        </div>
+        
+        <div class="mt-3" *ngIf="form.data.id>0">
+          <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+          <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Update' | translate}}</button>
+          &nbsp;
+          <button  type="submit" class="btn btn-warning" (click)="navigate('/marksheet-list')">{{'Marksheet List' | translate}}</button>
+         &nbsp;
+          
+              <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+          </div>
+          
+
+	</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>

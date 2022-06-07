@@ -1,0 +1,13 @@
+
+<app-navbar></app-navbar>
+<div class="row view " style=" padding-bottom: 40%; background-image: url('./assets/files/Classroom2.jpeg'); background-repeat: no-repeat; width: 101%; background-size: cover;">
+    <div class="col-md-4" ></div>
+    <br>  
+    <div  class="col-md-4 mt-xl-5">   
+<br>
+<br><br> <br> <br> <br> <br> <br> <br>
+<h1 *ngIf="!checkLogin()" style=" text-align: center" class="mt-5" > {{'Welcome !! please Login or SignUp' | translate }} </h1>
+<br> <br>
+<h1 style=" text-align: center; color: blueviolet;" class="mt-2" *ngIf="checkLogin()"> {{'Welcome To NCS' | translate }} </h1>
+</div>  
+</div>

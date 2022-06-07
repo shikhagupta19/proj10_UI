@@ -1,0 +1,141 @@
+<app-navbar></app-navbar>
+
+<div class="content-wrapper" style="padding-top: 3%;padding-bottom: 8; background-image: url(../../assets/files/bg5.jpg); background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;width:100%;
+  height: 800px;" >
+<!-- <div class=" row justify-content-center "> -->
+  <div class="container bg-light">
+  <div class="  col-md-12 my-xl-2 ">
+   
+<!-- <div class="card">
+  <div class="card-body shadow-lg">
+   -->
+
+<div style="padding-top: 3%; padding-bottom:3%;
+background-attachment: fixed;
+background-size: cover;
+width:auto;
+  height: auto;">
+  <form name="rollForm" (ngSubmit)="go()">
+    
+    <div align="center">
+      <h1 class="font-weight-bold text-primary">{{'Get MarkSheet'  | translate}}</h1>
+    </div>
+    <div class="row pt-4 pb-4">
+      <div class="col-md-5 col-sm-3 col-xs-3"></div>
+      <div class="col-md-2 col-sm-2 col-xs-2">
+        <input type="text" name="rollNo"  class="form-control" [(ngModel)]="form.data.rollNo"
+          placeholder="{{'Enter Roll No'  | translate}}" required >&emsp;</div>
+      <div class="col-md-2 col-sm-2 col-xs-2">
+        <button type="submit" class="btn btn-success mr-2">
+          {{'Save' | translate}}</button>
+        &emsp;
+
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-3"></div>
+
+    </div>
+  </form>
+  <!-- <div *ngIf="form.error" class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{form.message}}
+  </div> -->
+  <div *ngIf="form.error" class="text-center">
+     
+    <h1 class="text-center text-danger">{{form.message}}</h1>
+    
+  </div>
+
+  <!-- <div *ngIf="!form.error && form.message != null" class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{form.message}}
+  </div> -->
+<div *ngIf="!form.error">
+   
+  <div  class="container" *ngIf="form.list.rollNo!= null" >
+
+    <table  width="100%" class="table table-bordered table-striped table-hover" border="3px">
+      <tr>
+        <th id="po1" colspan="2">{{'Roll No' | translate }}</th> 
+        <td id="po1" colspan="3">{{form.list.rollNo}}</td>
+      </tr>
+      <tr>
+        <th id="po1" colspan="2">{{'Name'  | translate}}</th>
+        <td id="po1" colspan="3">{{form.list.name}}</td>
+      </tr>
+      <tr>
+        <th id="po1">{{'Marks'  | translate }}</th>
+        <th align="center" id="po1">{{'Max Marks' | translate }}</th>
+        <th  align="center" id="po1">{{'Min Marks' | translate}}</th>
+        <th  align="center" id="po1">{{'Marks Obtain' | translate}}</th>
+      </tr>
+      <tr>
+        <th id="po1" colspan="2">{{'Subject' | translate}}</th>
+        
+      </tr>
+      <tr>
+        <th id="po1">{{'Physics' | translate }}</th>
+        <td align="center">100</td>
+        <td align="center">35</td>
+        <td id="po1" align="center">
+          <span [ngStyle]="{'color': form.list.physics >33 ? 'green' : 'red'}">{{form.list.physics}}*</span> </td>
+      </tr>
+      <tr>
+        <th id="po1">{{'Chemistry'  | translate}}</th>
+        <td align="center">100</td>
+        <td align="center">35</td>
+        <td id="po1" align="center">
+          <span [ngStyle]="{'color': form.list.chemistry >33 ? 'green' : 'red'}">{{form.list.chemistry}}*</span> </td>
+      </tr>
+      <tr>
+        <th id="po1">{{'Maths'  | translate}}</th>
+        <td align="center">100</td>
+        <td align="center">35</td>
+        <td id="po1" align="center">
+          <span   [ngStyle]="{'color': form.list.maths >33 ? 'green' : 'red'}">{{form.list.maths}}*</span> </td>
+      </tr>
+      <tr>
+        <th id="po1" colspan="2">{{'Total' | translate }}</th>
+
+        <td id="po1" colspan="3">{{form.list.maths+form.list.physics+form.list.chemistry}}</td>
+      </tr>
+      <tr>
+
+        <th id="po1" colspan="2">{{'Percentage'  | translate}}</th>
+
+        <td id="po1" colspan="3">
+          {{((form.list.physics+form.list.maths+form.list.chemistry)*100)/300 | number:'2.0-2' }}%</td>
+      </tr>
+     
+      
+      <tr *ngIf="((form.list.physics+form.list.maths+form.list.chemistry)*100)/300 > 33 && form.list.maths > 33 && form.list.chemistry > 33 && form.list.physics > 33 " >
+              <th id="po1" align="center" colspan="2">
+          <font color="blue">{{'Grade' | translate  }}</font>
+        </th>
+        <td id="po1" align="center" colspan="3">
+
+          <font color="green"><b>{{'PASS'   | translate}}</b></font>
+        </td>
+      </tr>
+
+      <tr *ngIf="((form.list.physics+form.list.maths+form.list.chemistry)*100)/300 < 33 || form.list.maths < 33 || form.list.chemistry < 33 || form.list.physics < 33 " >
+        <th id="po1" align="center" colspan="2">
+          <font color="blue">{{'Final Grade '   | translate}}</font>
+          <font color="red"><b>F</b></font>
+        </th>
+        <td id="po1" align="center" colspan="3">
+          <font color="red"><b>{{'FAIL' | translate  }}</b></font>
+        </td>
+      </tr>
+
+
+
+    </table>
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>

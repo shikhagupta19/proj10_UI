@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+  <div class="row " style="padding-top: 5%; padding-bottom: 15%; background-image: url(./assets/files/bg3.jpg);
+background-attachment: fixed;
+background-size: cover;width:101%;
+
+  height: auto;">
+  <div class="col-sm-4"></div>
+  <div class="  col-md-4 my-xl-3 ">
+
+      <div class="card">
+        <div class="card-body shadow-lg ">
+
+          <form>
+            <div class="container">
+
+              <div>
+                <h4 *ngIf="form.error" class="text-center text-danger">{{form.message}} </h4>
+                <h4 *ngIf="!form.error" class="text-center text-success">{{form.message}} </h4>
+              </div>
+
+              <h2 *ngIf="!form.data.id>0" class="text-center text-primary font-weight-bold">{{'Add Role' | translate}}</h2>
+              <h2 *ngIf="form.data.id>0" class="text-center text-primary font-weight-bold">{{'Update Role' | translate}}</h2>
+
+              <div class="form-group">
+                <label class="lable"><strong>{{'RoleName' | translate}}:
+                    <font color="red">*</font>
+                  </strong></label>
+
+
+                <input type="text" class="form-control" [(ngModel)]="form.data.name" placeholder="{{'Enter RoleName' | translate}}"
+                  name="name">
+                <div class="text-danger">{{form.inputerror.name}} </div>
+              </div>
+              <div class="form-group">
+                <label class="lable"><strong>{{'Description' | translate}}:
+                    <font color="red">*</font>
+                  </strong></label>
+                <input type="text" class="form-control" [(ngModel)]="form.data.discription"
+                  placeholder="{{'Enter Description' | translate}}" name="discription">
+                <div class="text-danger">{{form.inputerror.discription}}</div>
+              </div>
+              <div *ngIf="!form.data.id>0">
+                <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+                <button type="submit" class="btn btn-primary" (click)="submit()">{{'Submit' | translate}}</button>
+                &nbsp;
+                <button type="submit" class="btn btn-warning" (click)="reset()">{{'Reset' | translate}}</button>
+                &nbsp;
+
+                <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+              </div>
+
+              <div *ngIf="form.data.id>0">
+                <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+                <button type="submit" class="btn btn-primary" (click)="submit()">{{'Update' | translate}}</button>
+                &nbsp;
+                <button type="submit" class="btn btn-warning" (click)="navigate('/rolelist')">{{'Role List' | translate}}</button>
+                &nbsp;
+
+                <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+              </div>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

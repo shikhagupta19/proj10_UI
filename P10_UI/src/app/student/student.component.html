@@ -1,0 +1,153 @@
+
+<app-navbar></app-navbar>
+<div class="row " style="background-image: url(../../assets/files/bg3.jpg);
+background-attachment: fixed;
+background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+width:101%;
+  height: 150%;">
+  <div class="col-sm-3"></div>	<div class="col-md-6 my-xl-5" >
+	
+    <div class="card">
+            <div class="card-body shadow-lg ">
+             
+<form>
+
+	<div class="container">
+        <div>
+            <h4 *ngIf="form.error" class="text-center text-danger">{{form.message}} </h4>
+            <h4  *ngIf="!form.error" class="text-center text-success">{{form.message}} </h4>
+        </div>
+	
+	    <h2 *ngIf="!form.data.id>0" class="text-center text-primary font-weight-bold">{{'Add Student' | translate}}</h2>
+          <h2 *ngIf="form.data.id>0" class="text-center text-primary font-weight-bold">{{'Update Student' | translate}}</h2>
+    
+	
+	
+	
+	<label><strong>{{'FirstName'  | translate}}:
+							<font color="red">*</font>
+					</strong></label>
+					<div class="input-group">
+						<div class="input-group-append">
+							<span class="input-group-text"> <i class="fa fa-user-circle"></i>
+							</span>
+						</div>
+						<input type="text" class="form-control"
+						[(ngModel)]="form.data.firstName"	placeholder="{{'Enter FirstName' | translate}}" name="firstName"
+							>
+
+					</div>
+					<div class="text-danger">{{form.inputerror.firstName}} </div>
+	
+	<!-- last name -->
+	
+	<label> <strong>{{'LastName' | translate}} <font color="red">*</font> </strong></label>
+	<div class="input-group">
+	<div class="input-group-append">
+	<span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
+	</div>
+	<input type="text" [(ngModel)]="form.data.lastName" class="form-control" placeholder="{{'Enter LastName' | translate}}" name="lastName" 
+	name="address">
+	</div>
+	<div class="text-danger">{{form.inputerror.lastName}} </div>
+	
+	
+	<label><strong>{{'DOB' | translate}} <font color="red">*</font></strong>  </label>
+	
+	<div class="input-group" >
+	<div class="input-group-append">
+	<span class="input-group-text"><i class="fas fa-calendar"></i> </span>
+	
+	</div>
+	<input class="form-control" [(ngModel)]="form.data.dob" type="date"  placeholder="Enter DOB" 
+	name="dob" >
+	</div>
+    <div class="text-danger">{{form.inputerror.dob}}</div>
+  
+	
+	<label><strong>{{'Mobile No' | translate}} <font color="red">*</font></strong>  </label>
+	
+	<div class="input-group" >
+	<div class="input-group-append">
+	<span class="input-group-text"><i class="fas fa-phone"></i> </span>
+	
+	</div>
+	<input class="form-control" [(ngModel)]="form.data.mobileNo" type="number"  placeholder="{{'Enter Mobile No' | translate}}" 
+	name="mobileNo"  >
+	
+	</div>
+	<div class="text-danger">{{form.inputerror.mobileNo}} </div>
+
+
+    <label> <strong>{{'Email'  | translate}} <font color="red">*</font> </strong> </label>
+	<div class="input-group">
+	
+	<div class="input-group-append">
+	<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+	</div>
+	<input [(ngModel)]="form.data.email" type="text" class="form-control" 
+	placeholder="{{'Enter Email Id' | translate}}"  name="email">
+	</div>
+    <div class="text-danger">{{form.inputerror.email}} </div>
+	
+	
+	
+
+    <label> <strong>{{'Roll No' | translate}} <font color="red">*</font> </strong> </label>
+	<div class="input-group">
+	
+	<div class="input-group-append">
+	<span class="input-group-text"> <i class="fa fa-list"></i> </span>
+	</div>
+	<input [(ngModel)]="form.data.enrolNo" type="text" class="form-control" 
+	placeholder="Enter City_Name"  name="enrolNo">
+	</div>
+    <div class="text-danger">{{form.inputerror.enrolNo}} </div>
+	
+	<label> <strong>{{'College Name'  | translate}} <font color="red">*</font> </strong> </label>
+	<div class="input-group">
+	
+	<div class="input-group-append">
+	<span class="input-group-text"> <i class="fa fa-university"></i> </span>
+	</div>
+	<select class="form-control" name="collegeId" [(ngModel)]="form.data.collegeId" aria-label="ngSelected">
+
+        <option *ngFor="let obj of form.preload.collegeList" [value]="obj.key">{{obj.value}}</option>
+      </select>
+	</div>
+    <div class="text-danger">{{form.inputerror.collegeId}} </div>
+	
+   
+
+      
+	
+    <div class="mt-3" *ngIf="!form.data.id>0">
+        <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+        <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Submit' | translate}}</button>
+        &nbsp;
+        <button  type="submit" class="btn btn-warning" (click)="reset()">{{'Reset' | translate}}</button>
+       &nbsp;
+        
+            <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+        </div>
+        
+        <div class="mt-3" *ngIf="form.data.id>0">
+          <!-- <button  type="submit" class="btn btn-primary" (click)="save()">Update</button> -->
+          <button  type="submit" class="btn btn-primary" (click)="submit()">{{'Update' | translate}}</button>
+          &nbsp;
+          <button  type="submit" class="btn btn-warning" (click)="navigate('/student-list')">{{'Student List' | translate}}</button>
+         &nbsp;
+          
+              <!-- <button *ngIf="form.id > 0" type="submit"  (click)="navigate('/getalluser')" class="btn btn-info" >RoleList </button> -->
+          </div>
+          
+
+	</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
